@@ -1,24 +1,38 @@
-import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useState } from "react";
 
 //create your first component
 const Home = () => {
+	const [ todo, setTodo ] = useState('');
+	const [ todosList, setTodosList] = useState([]);
+	const handleInput = (e) => {
+		setTodo(e.target.value);
+	}
+	const handleClick = () => {
+		setTodosList(todosList.concat([todo]));
+		if(todo === "") alert("The input cannot be empty");
+	  };
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="container ">
+			<h1 className="text-center rounded my-2 p-3 mb-2 bg-info text-white">
+				To Do List
+			</h1>
+
+			<input type="text" onChange={handleInput} value={todo} />
+			<button type="button" className="btn btn-primary" onClick={handleClick}>Add</button>
+			
+			<div className="container">
+				<ul className="list-group">
+				{ todosList.map (( data , index) => (
+					<li className="list-group-item d-flex justify-content-between" key={index}>
+						<span> {data} </span>
+					<button type="button" className="btn btn-danger">Delete</button>
+				</li>
+				))}
+				</ul>
+				<div>
+					<p> {todosList.length} pending task</p>
+				</div>
+			</div>
 		</div>
 	);
 };
