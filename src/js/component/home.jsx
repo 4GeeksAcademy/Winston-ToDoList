@@ -23,7 +23,7 @@ const Home = () => {
 			<div className="container">
 				<ul className="list-group">
 				{ todosList.map (( data , index) => (
-					<li className="list-group-item d-flex justify-content-between" key={index}>
+					<li className="list-group-item" key={index}>
 						<span> {data} </span>
 					<button type="button" className="btn btn-danger">Delete</button>
 				</li>
