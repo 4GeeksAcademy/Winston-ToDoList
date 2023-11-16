@@ -48,6 +48,7 @@ const Home = () => {
 				</ul>
 				<div>
 					<p> {todosList.length} pending {todosList.length === 1 ? "task" : "tasks"}</p>
+					<p> {todosList.length === 0 ? "Add task" : null}</p>
 				</div>
 			</div>
 		</div>
